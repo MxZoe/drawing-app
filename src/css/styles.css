@@ -1,0 +1,18 @@
+#top{
+  text-align: center;
+  background-color: lightblue;
+  padding: 2%;
+}
+
+#buttonDiv{
+  margin-top:2%;
+}
+
+#attribution{
+  text-align: center;
+  display: none;
+}
+
+#picDisplay{
+  text-align: center;
+}

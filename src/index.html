@@ -5,15 +5,52 @@
 </head>
 <body>
   <div id="top">
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4">
+        <form id="searchForm">
+            <div class="row">
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="search">
+              </div>
+              <div class="col-sm-3">
+                <button id="searchButton" type="submit" class="btn btn-primary" id="searchButton">Search</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>  
     <h3>Drawing Reference</h3>
     <h6>Powered by <a href="https://unsplash.com/">Unsplash</a></h6>
+    
+    <div class="row" id="buttonDiv">
+      <div class="col-sm-2">  
+        <button id="peopleButton" class="btn btn-primary">People</button>
+      </div>
+      <div class="col-sm-2">  
+        <button id="animalButton" class="btn btn-primary">Animals</button>
+      </div>
+      <div class="col-sm-2">  
+        <button id="thingsButton" class="btn btn-primary">Things</button>
+      </div>
+      <div class="col-sm-2">  
+        <button id="cityButton" class="btn btn-primary">Cityscape</button>
+      </div>
+      <div class="col-sm-2">  
+        <button id="landscapeButton" class="btn btn-primary">Landscape</button>
+      </div>
+      <div class="col-sm-2">  
+        <button id="randomButton" class="btn btn-primary">Random</button>
+      </div> 
+    </div>
   </div>
   <div class="container">
-    <button id="randomButton" class="btn btn-primary">Random</button>
+    
     <h6 id="picTitle"></h6>
     <div id="picDisplay"></div>
     <div id="showErrors"></div>
-    <p id="attribution"></p>
+    <p id="attribution">Photo by <span id="photographer"></span></p>
+  
 
     
   </div>
