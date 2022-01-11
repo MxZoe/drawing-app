@@ -9,7 +9,6 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
         <h3>Drawing Reference</h3>
-      <h6>Powered by <a href="https://unsplash.com/">Unsplash</a></h6>
       </div>
       <div class="col-sm-4">
         <form id="searchForm">
@@ -18,7 +17,7 @@
                 <input type="text" class="form-control" id="search">
               </div>
               <div class="col-sm-3">
-                <button id="searchButton" class="btn btn-primary" id="searchButton">Search</button>
+                <button type="submit" id="searchButton" class="btn btn-primary" >Search</button>
               </div>
             </div>
         </form>
@@ -50,9 +49,15 @@
   <div class="container">
     
     <h6 id="picTitle"></h6>
-    <div id="picDisplay"></div>
-    <div id="showErrors"></div>
-    <p id="attribution">Photo by <span id="photographer"></span></p>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div id="divDisplay" class="col-sm-6">
+        <span id="picDisplay"></span>
+      </div>
+    </div>
+    
+    <p id="showErrors"></p>
+    <p id="attribution">Photo by <span id="photographer"></span> on <a href="https://unsplash.com/">Unsplash</a></p>
   
 
     

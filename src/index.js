@@ -20,18 +20,20 @@ $(document).ready(function(){
     });
     promise.then(function(response){
       const body = JSON.parse(response);
-      $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
+      $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
       $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
       $("#attribution").show();
     }, function(error){
       $('#showErrors').text(`There was an error processing your request: ${error}`)
     });
   });
-  $("#searchButton").click(function(){
+  $("#searchForm").submit(function(event){
+    event.preventDefault();
     let searchTerm = $("#search").val();
+    $("#search").val("");
     let promise = new Promise(function(resolve, reject){
       let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/search/photos/?query=cat&client_id=${process.env.API_KEY}`
+      const url = `https://api.unsplash.com/photos/random/?query=${searchTerm}&client_id=${process.env.API_KEY}`
       request.onload = function(){ 
         if(this.status === 200){
           resolve(request.response);
@@ -44,12 +46,13 @@ $(document).ready(function(){
     });
     promise.then(function(response){
       const body = JSON.parse(response);
-      $("#picDisplay").html(`<img src=${body.results[0].urls.small} alt=${body.results[0].alt_description}>`);
-      $("#photographer").html(`<a href=${body.results[0].user.links.html}>${body.results[0].user.name}</a>`);
+      $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
+      $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
       $("#attribution").show();
     }, function(error){
       $('#showErrors').text(`There was an error processing your request: ${error}`)
     });
+    
   });
 
   $("#peopleButton").click(function(){
@@ -68,7 +71,7 @@ $(document).ready(function(){
     });
     promise.then(function(response){
       const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
+    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
     $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
     $("#attribution").show();
     }, function(error){
@@ -92,7 +95,7 @@ $(document).ready(function(){
     });
     promise.then(function(response){
       const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
+    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
     $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
     $("#attribution").show();
     }, function(error){
@@ -115,7 +118,7 @@ $(document).ready(function(){
     });
     promise.then(function(response){
       const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
+    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
     $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
     $("#attribution").show();
     }, function(error){
