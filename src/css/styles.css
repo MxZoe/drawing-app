@@ -15,7 +15,6 @@
 
 #divDisplay{
   text-align: center;
-  max-width: 36vw;
-  max-height: 64vh;
+
   overflow: hidden;
 }
