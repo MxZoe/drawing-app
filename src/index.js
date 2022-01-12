@@ -46,29 +46,19 @@ $(document).ready(function(){
     event.preventDefault();
     let searchTerm = $("#search").val();
     $("#search").val("");
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=${searchTerm}&client_id=${process.env.API_KEY}`
-      request.onload = function(){ 
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService(`${searchTerm}`)
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-      $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
-      $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-      $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-    
-  });
 
   $("#peopleButton").click(function(){
     let promise = new Promise(function(resolve, reject){
