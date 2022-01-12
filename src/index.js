@@ -61,142 +61,88 @@ $(document).ready(function(){
     });
 
   $("#peopleButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=person,people&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('person,people')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
 
   $("#animalButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=animal&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('animal,fauna')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
   $("#plantButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=plant,flower,floral&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('plant,flower,flora')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
   $("#thingsButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=thing,object,still&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('thing,object,stuff')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small}&ar=1.77:1&fit=crop&fill=blur alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
   $("#cityButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=city,cityscape,urban&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('city,urban')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
   $("#landscapeButton").click(function(){
-    let promise = new Promise(function(resolve, reject){
-      let request = new XMLHttpRequest();
-      const url = `https://api.unsplash.com/photos/random/?query=landscape,wilderness,nature&client_id=${process.env.API_KEY}`
-      request.onload = function(){
-        if(this.status === 200){
-          resolve(request.response);
-        } else{
-          reject(request.response);
+    let color = $('input[name="colorValue"]:checked').val();
+    UnsplashService.getService('landscape,wilderness,nature')
+      .then(function(unsplashResponse){
+        if (unsplashResponse instanceof Error) {
+          throw Error(`Unsplash API error: ${unsplashResponse.message}`);
         }
-      }
-      request.open("GET", url, true);
-      request.send();
+        displayPic(unsplashResponse, color);
+        response = unsplashResponse;
+      })
+      .catch(function(error) {
+        displayErrors(error.message)
+      });
     });
-    promise.then(function(response){
-      const body = JSON.parse(response);
-    $("#picDisplay").html(`<img src=${body.urls.small} alt=${body.alt_description}>`);
-    $("#photographer").html(`<a href=${body.user.links.html}>${body.user.name}</a>`);
-    $("#attribution").show();
-    }, function(error){
-      $('#showErrors').text(`There was an error processing your request: ${error}`)
-    });
-  });
 });
