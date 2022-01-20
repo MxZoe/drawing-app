@@ -16,17 +16,26 @@ function displayPic(response, color){
   $("#photographer").html(`<a href=${response.user.links.html}>${response.user.name}</a>`);
   $("#attribution").show();
 }
-
+function rotate(response, degree){
+  $("#picDisplay").html(`<img src=${response.urls.small}&rot=${degree}>`);
+}
 function displayErrors(error) {
   $('.show-errors').text(`${error}`);
 }
 
 $(document).ready(function(){
   let response;
+  let degree = 0;
   $("#colorDiv").change(function(){
     let color = $('input[name="colorValue"]:checked').val();
     displayPic(response, color);
-  })
+  });
+  $("#rotateButton").click(function(){
+    degree += 90;
+
+    $("#degree").text(`${degree}`)
+    rotate(response, degree);
+  });
   $("#randomButton").click(function(){
     let color = $('input[name="colorValue"]:checked').val();
     UnsplashService.getService("")
@@ -145,4 +154,5 @@ $(document).ready(function(){
         displayErrors(error.message)
       });
     });
+    $("#randomButton").click();
 });
