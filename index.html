@@ -2,64 +2,46 @@
 <html lang="en-US">
 <head>
   <title>Drawing Reference</title>
-  <script src="index.js" type="text/javascript" ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./index.js" type="text/javascript" ></script>
 </head>
 <body>
   <div id="top" class="topGrid">
 
-      <div id="colorDiv" class="col-sm-4">
-        <label for="color">Color</label>
+      <div id="colorDiv">
+        <label for="color" class="radioLabel">Color</label>
         <input type="radio" value="color" id="color" name="colorValue" checked>
-        <label for="bw">Black & white</label>
+        <label for="bw" class="radioLabel">Black & white</label>
         <input type="radio" value="bw" id="bw" name="colorValue">
-        <label for="invert">Invert</label>
+        <label for="invert" class="radioLabel">Invert</label>
         <input type="radio" value="invert" id="invert" name="colorValue">
       </div>
-      <div class="col-sm-4">
-        <h3>Drawing Reference</h3>
-      </div>
-      <div class="col-sm-4">
-        <button type="click" id="rotateButton" class="btn btn-primary">Rotate</button>
+      <div class="aButton">
+        <button type="click" id="rotateButton" class="btn"><img src="./assets/rotate-icon.png" alt="rotate arrow" title="rotate"></button>
       </div>
       
-     
-   
-    
-    <div id="buttonDiv">
-      <div class="aButton">  
-        <button id="peopleButton" class="btn btn-primary">People</button>
+      <div class="inputDiv">
+        <input type="text"  id="search">
       </div>
-      <div class="aButton">  
-        <button id="animalButton" class="btn btn-primary">Animals</button>
-      </div>
-      <div class="aButton">  
-        <button id="plantButton" class="btn btn-primary">Plants</button>
-      </div>
-      <div class="aButton">  
-        <button id="thingsButton" class="btn btn-primary">Things</button>
-      </div>
-      <div class="aButton">  
-        <button id="cityButton" class="btn btn-primary">Cityscape</button>
-      </div>
-      <div class="aButton">  
-        <button id="landscapeButton" class="btn btn-primary">Landscape</button>
-      </div>
-      <div class="aButton">  
-        <button id="randomButton" class="btn btn-primary">Random</button>
-      </div> 
-      <div class="aSearch">
-        <form id="searchForm">
-              <div class="inputDiv">
-                <input type="text"  id="search">
-              </div>
-              <div class="aButton">
-                <button type="submit" id="searchButton" class="btn btn-primary" >Search</button>
-              </div>
-            </div>
-        </form>
-      </div>
-    </div> 
+      <div class="aButton" id="searchButtonDiv">
+        <button type="submit" id="searchButton" class="btn" >search</button>
+      </div>   
+
+    <div id="presetButtonsDiv">
+      <button id="peopleButton" class="btn"><img src="./assets/person-icon.png" alt="person" title="person"></button>
+      <button id="animalButton" class="btn"><img src="./assets/animal-icon.png" alt="animal" title="animal"></button>
+      <button id="plantButton" class="btn"><img src="./assets/plant-icon.png" alt="plant" title="plant"></button>
+      <button id="thingsButton" class="btn"><img src="./assets/thing-icon.png" alt="things" title="things"></button>
+      <button id="cityButton" class="btn"><img src="./assets/city-icon.png" alt="city" title="cityscape"></button>
+      <button id="landscapeButton" class="btn"><img src="./assets/landscape-icon.png" alt="landscape" title="landscape"></button>
+      <button id="randomButton" class="btn"><img src="./assets/random-icon.png" alt="question mark" title="random"></button>
+    </div>
   </div> 
+  <div class="hideArrow">
+    <button id="upArrow"><img src="./assets/up-arrow.png" ></button>
+    <button id="downArrow"><img src="./assets/down-arrow.png" ></button>  
+  </div> 
+ 
 
   <div class="container">
     

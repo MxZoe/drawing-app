@@ -1,5 +1,5 @@
 import $ from "jquery";
-import './css/styles.css';
+import './src/css/styles.css';
 import UnsplashService from './src/services/unsplash-service.js';
 
 
@@ -18,12 +18,22 @@ function rotate(response, degree){
   $("#picDisplay").html(`<img src=${response.urls.small}&rot=${degree}>`);
 }
 function displayErrors(error) {
-  $('.show-errors').text(`${error}`);
+  $('#show-errors').text(`${error}`);
 }
 
-$(document).ready(function(){
+$(function(){
   let response;
   let degree = 0;
+  $("#upArrow").on("click", function(){
+    $("#top").hide();
+    $("#upArrow").hide();
+    $("#downArrow").show();
+  })
+  $("#downArrow").on("click", function(){
+    $("#top").show();
+    $("#upArrow").show();
+    $("#downArrow").hide();
+  })
   $("#colorDiv").change(function(){
     let color = $('input[name="colorValue"]:checked').val();
     displayPic(response, color);
@@ -152,5 +162,5 @@ $(document).ready(function(){
         displayErrors(error.message)
       });
     });
-    $("#randomButton").click();
+    $("#randomButton").trigger("click");
 });
