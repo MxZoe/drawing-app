@@ -1,6 +1,6 @@
 import $ from "jquery";
-import './src/css/styles.css';
-import UnsplashService from './src/services/unsplash-service.js';
+import './css/styles.css';
+import UnsplashService from './services/unsplash-service.js';
 
 
 function displayPic(response, color){
