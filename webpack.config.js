@@ -16,7 +16,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'drawing-app',
-      template: './src/index.html',
+      template: './index.html',
       inject: 'body'
     }),
     new Dotenv()
